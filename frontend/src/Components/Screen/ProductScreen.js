@@ -1,5 +1,5 @@
 import React from "react";
-import data from "../Data/Data";
+import data from "../Data/data";
 import Rating from "../Rating/Rating";
 import { Link, useParams } from "react-router-dom";
 
