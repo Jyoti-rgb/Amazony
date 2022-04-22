@@ -1,5 +1,5 @@
 // import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Product from "../Product/Product";
 import LoadingBox from "../LoadingBox/LoadingBox";
 import MessageBox from "../MessageBox/MessageBox";
