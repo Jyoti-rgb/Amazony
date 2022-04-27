@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
+import { addToCart } from "../../redux/cart/cartAction";
 
 function CartScreen() {
-  useParams();
+  const dispatch = useDispatch();
   const { id } = useParams();
-
-  const girl = ["jyoti", "18", "female"];
-
-  const [name, age, gender] = girl;
 
   const location = useLocation();
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
   console.log(qty);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(addToCart(id, qty));
+    }
+  }, [dispatch, id, qty]);
+
   return (
     <div>
-      <h1>
-        Cart Screen {name} {age} {gender}
-      </h1>
+      <h1>Cart Screen</h1>
       <p>
         ADD TO CART : ProductID: {id} Qty:{qty}
       </p>

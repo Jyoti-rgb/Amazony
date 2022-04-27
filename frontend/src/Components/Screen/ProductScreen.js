@@ -118,7 +118,7 @@ export default function ProductScreen() {
                     </>
                   )}
                   {/* <li>
-                    <button    className="primary block">Add to Cart</button>
+                    <button className="primary block">Add to Cart</button>
                   </li> */}
                 </ul>
               </div>
