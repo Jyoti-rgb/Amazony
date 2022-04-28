@@ -1,6 +1,6 @@
-import { CART_ADD_ITEM } from "./cartType";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "./cartType";
 
-const initialState = {
+export const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [],
@@ -24,6 +24,11 @@ export const cartReducer = (state = initialState, action) => {
           cartItems: [...state.cartItems, item],
         };
       }
+    case CART_REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      };
     default:
       return state;
   }
