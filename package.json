@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/Jyoti-rgb/Amazony#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.3",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.3.2"
   },
   "devDependencies": {
     "eslint": "^8.13.0",

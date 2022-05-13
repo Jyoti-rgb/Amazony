@@ -1,7 +1,27 @@
 import express from "express";
+import mongoose from "mongoose";
 import data from "./data.js";
+import userRouter from "./routers/userRouter.js";
 
 const app = express();
+
+// mongoose.connect("mongodb://localhost/amazony", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+// });
+
+const DB =
+  "mongodb+srv://Jyoti:Jyoti1234@cluster0.palcu.mongodb.net/amazony?retryWrites=true&w=majority";
+
+mongoose
+  .connect(DB)
+  .then(() => {
+    console.log(`connection successfully`);
+  })
+  .catch((err) => {
+    console.log(`no connection`);
+  });
 
 app.get("/api/products/:id", (req, res) => {
   const product = data.products.find((x) => x._id === req.params.id);
@@ -16,8 +36,13 @@ app.get("/api/products", (req, res) => {
   res.send(data.products);
 });
 
+app.use("/api/users", userRouter);
 app.get("/", (req, res) => {
   res.send("Server is ready");
+});
+
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
 });
 
 const port = process.env.PORT || 5000;
