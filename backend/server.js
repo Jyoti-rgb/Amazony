@@ -1,16 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
 // import data from "./data.js";
+import dotenv from "dotenv";
 import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js";
 
-const app = express();
+dotenv.config();
 
-// mongoose.connect("mongodb://localhost/amazony", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-// });
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const DB =
   "mongodb+srv://Jyoti:Jyoti1234@cluster0.palcu.mongodb.net/amazony?retryWrites=true&w=majority";
