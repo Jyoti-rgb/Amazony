@@ -16,6 +16,8 @@ export default function HomeScreen() {
     (state) => state.productList
   );
 
+  console.log(error);
+
   useEffect(() => {
     dispatch(productListAction());
   }, []);
