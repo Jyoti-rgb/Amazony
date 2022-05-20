@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addToCart } from "./redux/cart/cartAction";
 import SignInScreen from "./Components/Screen/SignInScreen";
+import RegisterScreen from "./Components/Screen/RegisterScreen";
 import { signout } from "./redux/signin/userAction";
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
             <Route path="/cart/:id" element={<CartScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/signin" element={<SignInScreen />} />
+            <Route path="/register" element={<RegisterScreen />} />
             <Route path="/" index element={<HomeScreen />} />
           </Routes>
         </main>
