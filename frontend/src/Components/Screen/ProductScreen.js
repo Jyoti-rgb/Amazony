@@ -23,7 +23,7 @@ export default function ProductScreen() {
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-  console.log(productDetails);
+  // console.log(productDetails);
 
   useEffect(() => {
     dispatch(productScreenAction(id));

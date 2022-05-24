@@ -6,7 +6,7 @@ import { signin } from "../../redux/signin/userAction";
 import LoadingBox from "../LoadingBox/LoadingBox";
 import MessageBox from "../MessageBox/MessageBox";
 
-export default function SignInScreen(props) {
+export default function SignInScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,9 +28,10 @@ export default function SignInScreen(props) {
   useEffect(() => {
     if (userInfo) {
       // props.history.push(redirect);
+
       navigate(redirect);
     }
-  }, [redirect, userInfo]);
+  }, [navigate, redirect, userInfo]);
   return (
     <div>
       <form className="form" onSubmit={submitHandler}>

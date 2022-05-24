@@ -4,11 +4,12 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import ProductScreen from "./Components/Screen/ProductScreen";
 import CartScreen from "./Components/Screen/CartScreen";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { addToCart } from "./redux/cart/cartAction";
+// import { useEffect } from "react";
+// import { addToCart } from "./redux/cart/cartAction";
 import SignInScreen from "./Components/Screen/SignInScreen";
 import RegisterScreen from "./Components/Screen/RegisterScreen";
 import { signout } from "./redux/signin/userAction";
+import ShippingAddressScreen from "./Components/Screen/ShippingAddressScreen";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/signin" element={<SignInScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
+            <Route path="/shipping" element={<ShippingAddressScreen />} />
             <Route path="/" index element={<HomeScreen />} />
           </Routes>
         </main>
