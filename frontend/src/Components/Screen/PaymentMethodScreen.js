@@ -1,13 +1,21 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { savePaymentMethod } from "../../redux/cart/cartAction";
 import CheckoutSteps from "../CheckoutSteps/CheckoutSteps";
 
 export default function PaymentMethodScreen() {
+  const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart);
+  const { shippingAddress } = cart;
+  useEffect(() => {
+    if (!shippingAddress.address) {
+      navigate("/shipping");
+    }
+  }, []);
+
   const [paymentMethod, setPaymentMethod] = useState("PayPal");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -22,7 +30,7 @@ export default function PaymentMethodScreen() {
         <div>
           <h1>Payment Method</h1>
         </div>
-        <div>
+        <div className="payrow">
           <input
             type="radio"
             id="paypal"
@@ -32,9 +40,11 @@ export default function PaymentMethodScreen() {
             checked
             onChange={(e) => setPaymentMethod(e.target.value)}
           />
-          <label htmlFor="paypal">PayPal</label>
+          <label htmlFor="paypal" className="paylable">
+            PayPal
+          </label>
         </div>
-        <div>
+        <div className="payrow">
           <input
             type="radio"
             id="stripe"
@@ -43,7 +53,9 @@ export default function PaymentMethodScreen() {
             required
             onChange={(e) => setPaymentMethod(e.target.value)}
           />
-          <label htmlFor="stripe">Stripe</label>
+          <label htmlFor="stripe" className="paylable">
+            Stripe
+          </label>
         </div>
         <div>
           <button className="primary" type="submit">
