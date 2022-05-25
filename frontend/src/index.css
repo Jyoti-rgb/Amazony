@@ -213,13 +213,12 @@ img.large {
 }
 .form > div {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin: 1rem;
 }
-.form label {
+/* .form label {
   margin: 1rem 0;
-  display: block;
-}
+} */
 /* Dropdown */
 .dropdown {
   display: inline-block;

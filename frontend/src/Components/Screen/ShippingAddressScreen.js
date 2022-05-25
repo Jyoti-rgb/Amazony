@@ -8,17 +8,21 @@ export default function ShippingAddressScreen() {
   const navigate = useNavigate();
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+
   useEffect(() => {
     if (!userInfo) {
       navigate("/signin");
     }
   }, []);
 
-  const [fullname, setFullName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [postalcode, setPostalcode] = useState("");
-  const [country, setCountry] = useState("");
+  const cart = useSelector((state) => state.cart);
+  const { shippingAddress } = cart;
+
+  const [fullname, setFullName] = useState(shippingAddress.fullname);
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalcode, setPostalcode] = useState(shippingAddress.postalcode);
+  const [country, setCountry] = useState(shippingAddress.country);
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {
