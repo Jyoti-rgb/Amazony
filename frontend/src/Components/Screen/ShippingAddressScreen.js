@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { saveShippingAddress } from "../../redux/cart/cartAction";
 import CheckoutSteps from "../CheckoutSteps/CheckoutSteps";
 
 export default function ShippingAddressScreen() {
+  const navigate = useNavigate();
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("/signin");
+    }
+  }, []);
+
   const [fullname, setFullName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [postalcode, setPostalcode] = useState("");
   const [country, setCountry] = useState("");
-  const navigate = useNavigate();
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
-  if (!userInfo) {
-    navigate("/signin");
-  }
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {

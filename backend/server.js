@@ -19,7 +19,7 @@ mongoose
   .then(() => {
     console.log(`connection successfully`);
   })
-  .catch((err) => {
+  .catch(() => {
     console.log(`no connection`);
   });
 
@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
   res.send("Server is ready");
 });
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
 
