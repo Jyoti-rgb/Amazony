@@ -11,6 +11,7 @@ import RegisterScreen from "./Components/Screen/RegisterScreen";
 import { signout } from "./redux/signin/userAction";
 import ShippingAddressScreen from "./Components/Screen/ShippingAddressScreen";
 import PaymentMethodScreen from "./Components/Screen/PaymentMethodScreen";
+import PlaceOrderScreen from "./Components/Screen/PlaceOrderScreen";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function App() {
             </Link>
           </div>
           <div>
-            <Link to="/cart">
+            <Link to="/cart/:id">
               Cart
               {cartItems.length > 0 && (
                 <span className="badge">{cartItems.length}</span>
@@ -66,6 +67,7 @@ function App() {
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/shipping" element={<ShippingAddressScreen />} />
             <Route path="/payment" element={<PaymentMethodScreen />} />
+            <Route path="/placeorder" element={<PlaceOrderScreen />} />
             <Route path="/" index element={<HomeScreen />} />
           </Routes>
         </main>
